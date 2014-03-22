@@ -64,7 +64,7 @@
 
     <div class="container">
       <div class="page-header">
-        <h1>p2pool <span id='currency'></span> &dash; node dashboard</h1>
+        <h1>p2pool <span class='currency'></span> &dash; node dashboard</h1>
         <b>
           <small>
             <span id='_node' class='hidden'>Node: </span>
@@ -108,10 +108,10 @@
           <td width='31%' class='text-right'><span id='share_difficulty'></span></td>
         </tr>
         <tr>
-          <td width='19%'><span class='currency'></span> network hashrate (estimate):</td>
-          <td width='31%' class='text-right'><span id='network_rate'></span></td>
-          <td width='19%'>Network block difficulty:</td>
-          <td width='31%' class='text-right'><span id='block_difficulty'></span></td>
+          <td width='25%'><span class='currency'></span> network hashrate (estimate):</td>
+          <td width='25%' class='text-right'><span id='network_rate'></span></td>
+          <td width='25%'>Network block difficulty:</td>
+          <td width='25%' class='text-right'><span id='block_difficulty'></span></td>
         </tr>
         <tr>
           <td width='19%'>Current block value:</td>
@@ -511,7 +511,7 @@
       else { currency= $('<span/>').append(currency_info.symbol); }
 
       if(set_currency_symbol) {
-        $('#currency')
+        $('.currency')
           .append('(').append(currency).append(')');
         set_currency_symbol= false;
       }
