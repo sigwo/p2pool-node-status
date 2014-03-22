@@ -108,15 +108,21 @@
           <td width='31%' class='text-right'><span id='share_difficulty'></span></td>
         </tr>
         <tr>
+          <td width='25%'><span class='currency'></span> network hashrate (estimate):</td>
+          <td width='25%' class='text-right'><span id='network_rate'></span></td>
+          <td width='25%'>Network block difficulty:</td>
+          <td width='25%' class='text-right'><span id='block_difficulty'></span></td>
+        </tr>
+        <tr>
           <td width='19%'>Current block value:</td>
           <td width='31%' class='text-right'><span id='block_value'></span></td>
-          <td width='19%'>Expected time to share:</td>
+          <td width='19%'>Expected time to share (this node):</td>
           <td width='31%' class='text-right'><span id='expected_time_to_share'></span></td>
         </tr>
         <tr>
-          <td width='19%'>Payout if a block were found NOW:</td>
-          <td width='31%' class='text-right'><span id='payout_now'></span></td>
-          <td width='19%'>Expected time to block:</td>
+          <td width='19%'>Node fee / donation:</td>
+          <td width='31%' class='text-right'><span id='node_fee'></span> / <span id='node_donation'></span></td>
+          <td width='19%'>Expected time to block (pool):</td>
           <td width='31%' class='text-right'><span id='expected_time_to_block'></span></td>
         </tr>
         <tr>
@@ -137,23 +143,20 @@
           <td width='19%'>Protocol version:</td>
           <td width='31%' class='text-right'><span id='protocol_version'></span></td>
         </tr>
-        <tr>
-          <td width='19%'>Node fee:</td>
-          <td width='31%' class='text-right'><span id='node_fee'></span></td>
-          <td width='19%'>Node donation:</td>
-          <td width='31%' class='text-right'><span id='node_donation'></span></td>
-        </tr>
       </table>
 
       <h4>Active miners on this node</h4>
-      <table id='active_miners' class="table table-hover">
-        <tr>
-          <th width='50%' class='text-left'>Bitcoin Address</th>
-          <th width='12%' class='text-right'>Hashrate</th>
-          <th width='12%' class='text-right'>DOA Hashrate</th>
-          <th width='12%' class='text-right'>DOA %</th>
-          <th width='14%' class='text-right'>Predicted payout</th>
-        </tr>
+      <table class="table table-hover">
+        <thead><tr>
+          <th class='text-left'><span class='currency'></span> Address</th>
+          <th class='text-right'>Hashrate</th>
+          <th class='text-right'>DOA Hashrate</th>
+          <th id='plus1' class='text-right'>Share difficulty</th>
+          <th id='plus2' class='text-right'>Time to share</th>
+          <th class='text-right'>Miner Share(s)</th>
+        </tr></thead>
+        <tbody id='active_miners'>
+        </tbody>
       </table>
 
 <!--
@@ -272,6 +275,19 @@
 
     $(document).on('update_miners', function(e, eventInfo) {
       local_hashrate= 0; local_doa_hashrate= 0;
+
+      backend_plus = ((typeof local_stats.miner_last_difficulties !== 'undefined') ? true : false);
+
+      if (backend_plus) {
+        $('#plus1').removeClass('hidden');
+        $('#plus2').removeClass('hidden');
+      } else {
+        $('#plus1').addClass('hidden');
+        $('#plus2').addClass('hidden');
+      }
+
+      $('#active_miners').empty();
+
       $.each(local_stats.miner_hash_rates, function(address, hashrate) {
         tr= $('<tr/>').attr('id', address);
 
@@ -281,6 +297,7 @@
           tr.addClass('warning');
         }
 
+<!--
         // highlight the pool's payout address
         payout_addr in current_payouts ?
           $('#payout_now')
@@ -288,7 +305,7 @@
             .append(' ')
             .append(currency.clone()) :
           $('#payout_now').html('&dash;');
-
+-->
         address_span= $('<span/>').addClass('coin_address').text(address);
         link_icon= $('<i/>').addClass('fa fa-external-link fa-fw');
         blockinfo= $('<a/>')
@@ -309,9 +326,23 @@
         tr.append($('<td/>').addClass('text-right')
           .append(formatHashrate(hashrate)));
         tr.append($('<td/>').addClass('text-right')
-          .append(formatHashrate(doa)));
-        tr.append($('<td/>').addClass('text-right')
-          .append(doa_prop.toFixed(2) + '%'));
+          .append(formatHashrate(doa) + ' (' + doa_prop.toFixed(2) + '%)'));
+
+        if (backend_plus) {
+          diff = parseFloat(local_stats.miner_last_difficulties[address]) || 0;
+
+          time_to_share = (parseInt(local_stats.attempts_to_share) / parseInt(hashrate)
+           * (diff / parseFloat(global_stats.min_difficulty))) || 0;
+
+          diff = diff.toFixed(3);
+          time_to_share = (''+time_to_share).formatSeconds();
+
+          tr.append($('<td/>').attr('class', 'text-right')
+           .append(diff));
+
+          tr.append($('<td/>').attr('class', 'text-right')
+           .append(time_to_share));
+        }
 
         payout= current_payouts[address] || 0;
 
@@ -325,7 +356,8 @@
           tr.append($('<td/>').attr('class', 'text-right')
             .append($('<i/>').append('no shares yet')));
         }
-        $('#'+address).remove(); $('#active_miners').append(tr);
+        //$('#'+address).remove();
+        $('#active_miners').append(tr);
       });
 
       if(local_doa_hashrate !== 0 && local_hashrate !== 0) {
@@ -351,6 +383,16 @@
         + ' / ' + ((global_doa_rate / pool_hash_rate) * 100).toFixed(2)
         + '%)';
       $('#global_rate').text(global_rate);
+
+      $('#network_rate').text(formatHashrate(global_stats.network_hashrate));
+
+      block_diff = global_stats.network_block_difficulty;
+      if (typeof block_diff !== 'undefined') {
+        block_diff = block_diff.toFixed(3);
+      } else {
+        block_diff = 'n/a';
+      }
+      $('#block_difficulty').text(block_diff);
 
       $('#share_difficulty')
         .text(parseFloat(global_stats.min_difficulty).toFixed(2));
@@ -471,6 +513,8 @@
       if(set_currency_symbol) {
         $('#currency')
           .append('(').append(currency).append(')');
+        $('.node')
+          .append(location.host);
         set_currency_symbol= false;
       }
     });
