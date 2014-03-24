@@ -64,7 +64,7 @@
 
     <div class="container">
       <div class="page-header">
-        <h1>p2pool <span class='currency'></span> &dash; node dashboard</h1>
+        <h1>p2pool (<span class='currency'></span>) &dash; node dashboard</h1>
         <b>
           <small>
             <span id='_node' class='hidden'>Node: </span>
@@ -107,7 +107,7 @@
           <td width='19%'>Share difficulty:</td>
           <td width='31%' class='text-right'><span id='share_difficulty'></span></td>
         </tr>
-        <tr>
+        <tr id='extended_api'>
           <td width='25%'><span class='currency'></span> network hashrate (estimate):</td>
           <td width='25%' class='text-right'><span id='network_rate'></span></td>
           <td width='25%'>Network block difficulty:</td>
@@ -276,12 +276,16 @@
     $(document).on('update_miners', function(e, eventInfo) {
       local_hashrate= 0; local_doa_hashrate= 0;
 
-      backend_plus = ((typeof local_stats.miner_last_difficulties !== 'undefined') ? true : false);
+      backend_plus=
+        ((typeof local_stats.miner_last_difficulties !== 'undefined')
+          ? true
+          : false);
 
       if (backend_plus) {
         $('#plus1').removeClass('hidden');
         $('#plus2').removeClass('hidden');
-      } else {
+      }
+      else {
         $('#plus1').addClass('hidden');
         $('#plus2').addClass('hidden');
       }
@@ -355,12 +359,13 @@
           tr.append($('<td/>').attr('class', 'text-right')
             .append($('<i/>').append('no shares yet')));
         }
-		$("tr[id='" + address + "']").remove(); $('#active_miners').append(tr);
+        $("tr[id='" + address + "']").remove(); $('#active_miners').append(tr);
       });
 
       if(local_doa_hashrate !== 0 && local_hashrate !== 0) {
         doa_rate= (local_doa_hashrate / local_hashrate) * 100;
-      } else { doa_rate= 0; }
+      }
+      else { doa_rate= 0; }
 
       rate= formatHashrate(local_hashrate)
         + ' (DOA '
@@ -382,15 +387,21 @@
         + '%)';
       $('#global_rate').text(global_rate);
 
-      $('#network_rate').text(formatHashrate(global_stats.network_hashrate));
-
-      block_diff = global_stats.network_block_difficulty;
-      if (typeof block_diff !== 'undefined') {
-        block_diff = block_diff.toFixed(3);
-      } else {
-        block_diff = 'n/a';
+      if(backend_plus) {
+        $('#network_rate')
+          .text(formatHashrate(global_stats.network_hashrate));
+        block_diff= global_stats.network_block_difficulty;
+        if(typeof block_diff !== 'undefined') {
+          block_diff= block_diff.toFixed(3);
+        }
+        else {
+          block_diff= 'N/A';
+        }
+        $('#block_difficulty').text(block_diff);
       }
-      $('#block_difficulty').text(block_diff);
+      else {
+        $('#extended_api').hide();
+      }
 
       $('#share_difficulty')
         .text(parseFloat(global_stats.min_difficulty).toFixed(2));
@@ -440,7 +451,8 @@
         time_to_share=
           (parseInt(local_stats.attempts_to_share) / parseInt(local_hashrate));
         $('#expected_time_to_share').text((''+time_to_share).formatSeconds());
-      } else {
+      }
+      else {
         $('#expected_time_to_share').html('&dash;');
       }
 
@@ -510,7 +522,7 @@
 
       if(set_currency_symbol) {
         $('.currency')
-          .append('(').append(currency).append(')');
+          .append(currency);
         set_currency_symbol= false;
       }
     });
