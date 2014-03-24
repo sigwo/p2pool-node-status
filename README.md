@@ -138,7 +138,7 @@ Alexander Zschach <alex@zschach.net>
 
 ### Donate
 
-If you like this tool, find it useful or if you just find it useful, that people out there writing free software for everybody to use or contribute, please donate some coins:
+If you like this tool, find it useful or if you just find it cool, that people out there writing **free** software for everybody to use or contribute, please donate some coins:
 
 Bitcoins 1MzFr1eKzLEC1tuoZ7URMB7WWBMgHKimKe  
 Litecoins LSRfZJf75MtwzrbAUfQgqzdK4hHpY4oMW3  
