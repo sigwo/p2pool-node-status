@@ -297,15 +297,14 @@
           tr.addClass('warning');
         }
 
-<!--
         // highlight the pool's payout address
-        payout_addr in current_payouts ?
-          $('#payout_now')
-            .text(current_payouts[payout_addr])
-            .append(' ')
-            .append(currency.clone()) :
-          $('#payout_now').html('&dash;');
--->
+//        payout_addr in current_payouts ?
+//          $('#payout_now')
+//            .text(current_payouts[payout_addr])
+//            .append(' ')
+//            .append(currency.clone()) :
+//          $('#payout_now').html('&dash;');
+
         address_span= $('<span/>').addClass('coin_address').text(address);
         link_icon= $('<i/>').addClass('fa fa-external-link fa-fw');
         blockinfo= $('<a/>')
