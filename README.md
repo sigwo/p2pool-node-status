@@ -102,7 +102,7 @@ to set it to 20 seconds for example.
 
 ### Disable Fontawesome Bitcoin icon
 
-On Bitcoin p2pools, this UI uses the Fontawesome Bitcoin icon per default.  This can be disabled per `use_fontawesome` configuration option.  Set it to false if don't want to use the bitcoin icon.
+On Bitcoin p2pools, this UI uses the Fontawesome Bitcoin icon per default.  This can be disabled per `use_fontawesome` configuration option.  Set it to false if you don't want to use the bitcoin icon.
 
 ``` JavaScript
 var config = {
