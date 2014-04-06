@@ -1,4 +1,4 @@
-var draw= function(hashrate, doarate, renderTo, interval) {
+var draw= function(hashrate, doarate, blocks, renderTo, interval) {
   chart= new Highcharts.Chart({
     chart: {
       renderTo: renderTo,
@@ -111,5 +111,9 @@ var draw= function(hashrate, doarate, renderTo, interval) {
       color: '#761800',
     }]
   });
+
+  for (var i in blocks) {
+    chart.xAxis[0].addPlotLine({ color: 'rgba(0,0,0,0.2)', width: 1, value: blocks[i]});
+  }
 };
 

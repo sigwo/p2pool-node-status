@@ -524,7 +524,7 @@
     }
 
     var fetchGraph= function(interval) {
-      var graph_hashrate= [], graph_doa_hashrate= [];
+      var graph_hashrate= [], graph_doa_hashrate= [], graph_blocks= [];
 
       $.getJSON(api_url + '/web/graph_data/local_hash_rate/last_' + interval
         ,function(data) {
@@ -542,7 +542,11 @@
             graph_doa_hashrate.push(el);
           });
           graph_doa_hashrate.sort();
-          draw(graph_hashrate, graph_doa_hashrate, 'chart', interval);
+          $.each(recent_blocks, function(key, block) {
+            el= []; el.push(parseInt(block["ts"]) * 1000);
+              graph_blocks.push(el);
+          });
+          draw(graph_hashrate, graph_doa_hashrate, graph_blocks, 'chart', interval);
         });
       });
     };
