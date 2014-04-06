@@ -542,7 +542,7 @@
             graph_doa_hashrate.push(el);
           });
           graph_doa_hashrate.sort();
-          $.each(recent_blocks, function(key, block) {
+          if (recent_blocks) $.each(recent_blocks, function(key, block) {
             el= []; el.push(parseInt(block["ts"]) * 1000);
               graph_blocks.push(el);
           });
