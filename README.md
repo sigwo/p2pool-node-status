@@ -10,7 +10,7 @@ An alternative clean p2pool node dashboard. It uses Bootstrap, jQuery and Highch
 To run this UI in parallel to your current p2pool web interface, do in your web-static directory:
 
 ``` Bash
-git clone https://github.com/johndoe75/p2pool-node-status.git
+git clone https://github.com/sigwo/p2pool-node-status.git
 ```
 
 You can then access the UI per `http://<url-to-your-p2pool>:<port>/static/p2pool-node-status/`
@@ -21,7 +21,7 @@ To replace your current web-static, do in the top directory of your p2pool insta
 
 ``` Bash
 mv web-static _web-static-pre
-git clone https://github.com/johndoe75/p2pool-node-status.git web-static
+git clone https://github.com/sigwo/p2pool-node-status.git web-static
 ```
 
 and access as usually per `http://<url-to-your-p2pool>:<port>/static`
@@ -116,7 +116,7 @@ var config = {
 
 If this variable is set to `false`, the UI displays the p2pool currency symbol (BTC).
 
-*This does only apply to Bitcoin pools.  On other cryptocurrencies, the UI displays whatever p2pool API replies as currency symbol.*
+*This does only apply to Bitcoin pools.  On other digital currencies, the UI displays whatever p2pool API replies as currency symbol.*
 
 ## Roadmap
 
