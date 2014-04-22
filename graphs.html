@@ -54,7 +54,7 @@
 <div class="container"> 
  <div id="navbar">
       <div class="page-header">
-        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; node dashboard</h1>
+        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; Personal Stats</h1>
         <b>
 		  <h5><a href="/">Stats</a>
 		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
@@ -73,7 +73,7 @@
           <button id='year' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</button></a>
         </div>
      </center>
-	<b>
+	
   <script type="text/javascript">
     period = window.location.search.substr(1);
     $('#scale_menu li').removeClass('active');
@@ -83,8 +83,8 @@
       d3.selectAll('.symbol').text(currency_info.symbol);
     });
   </script>
- <!-- <p style="display: none">Periods: <span id="period_chooser"></span> Current: <span id="period_current"></span></p>
-  <div id="warnings"></div> -->
+ <p style="display: none">Periods: <span id="period_chooser"></span> Current: <span id="period_current"></span></p>
+  <div id="warnings"></div> 
   <div class="well fixdivs">  
     <h2>Miners</h2>
     <div id="miners"></div>
