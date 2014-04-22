@@ -372,7 +372,7 @@ periods = ["Hour", "Day", "Week", "Month", "Year"];
 d3.select("#period_chooser").selectAll().data(periods).enter().append("a")
   .text(function(period) { return period })
   .attr('href', function(period){ return "?" + period })
-  .attr("style", function(d, i) { return (i == 0 ? "" : "margin-left:.4em;") + "color:blue;text-decoration:underline;cursor:pointer" });
+  .attr("style", function(d, i) { return (i == 0 ? "" : "margin-left:.4em;") });
 period = window.location.search.substr(1);
 if(period.length < 3) {
   window.location.search = "Day";
