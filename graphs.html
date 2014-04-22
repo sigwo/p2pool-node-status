@@ -6,10 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="img/favicon.ico">
-	
-	<style type="text/css">
-     a:link {color:#F0FFFF;}
-    </style>
     
 	<title>BeMining.net - Miner Stats</title>
 
@@ -33,14 +29,14 @@
 
     <script src="js/config.json"></script>
 	
-	<!-- from broodnix -->
+	<!-- from broodnix 
 	<script type="text/javascript" src="conf/settings.js"></script>
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-old.min.js"></script>
 	<script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
 	<script type="text/javascript" src="js/jqplot.pieRenderer.min.js"></script>
-	<script type="text/javascript" src="js/contact.js"></script>
+	<script type="text/javascript" src="js/contact.js"></script> -->
 	<script type="text/javascript">
     function ChangeCurrentPeriod(p_Period, p_Sender) {
       period=p_Period;
@@ -67,12 +63,15 @@
  </div> 
 	<center>
         <div class='container'>
+		 <style type="text/css">
+          a:link {color:#F0FFFF;}
           <button id='scaleHour' type="button" class="hashrate btn btn-info"class="active"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</button></a>
           <button id='scaleDay' type="button"  class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Day', 'scaleDay');">Day</button></a>
           <button id='scaleWeek' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Week', 'scaleWeek');">Week</button></a>
           <button id='scaleMonth' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Month', 'scaleMonth');">Month</button></a>
           <button id='scaleYear' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</button></a>
         </div>
+	  </style>	
      </center>
 	<br>
   <script type="text/javascript">
