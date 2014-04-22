@@ -58,20 +58,15 @@
 		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
 		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
           <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
-          <small>
-            <span id='_node' class='hidden'>Node: </span>
-            <span id='node' class='hidden'></span><br/>
-            Updated: <span id='updated'></span>
-          </small>
         </b>
       </div>
 	<center>
         <div class='container'>
-          <button id='hour' type="button" class="hashrate btn btn-info">Hour</button>
-          <button id='day' type="button" class="hashrate btn btn-info">Day</button>
-          <button id='week' type="button" class="hashrate btn btn-info">Week</button>
-          <button id='month' type="button" class="hashrate btn btn-info">Month</button>
-          <button id='year' type="button" class="hashrate btn btn-info">Year</button>
+          <button id='hour' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</button></a>
+          <button id='day' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Day', 'scaleDay');">Day</button></a>
+          <button id='week' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Week', 'scaleWeek');">Week</button></a>
+          <button id='month' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Month', 'scaleMonth');">Month</button></a>
+          <button id='year' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</button></a>
         </div>
      </center>
   <script type="text/javascript">
