@@ -150,7 +150,7 @@ function plot(g, unit, total_unit, lines, stack) {
       }
     }
     g.append("svg:line")
-      .style("stroke", "black")
+      .style("stroke", "transparent")
       .attr("x1", w - margin_h + 3)
       .attr("y1", y(total))
       .attr("x2", w - margin_h + 10)
@@ -159,7 +159,7 @@ function plot(g, unit, total_unit, lines, stack) {
       .text("Total (mean: " + d3.format(".3s")(total) + unit + ")")
       .attr("text-anchor", "start")
       .attr("dominant-baseline", "central")
-      .attr("fill", "black")
+      .attr("fill", "transparent")
       .attr("x", w - margin_h + 10)
       .attr("y", y_abs(1));
     if(total_unit != null) {
@@ -167,7 +167,7 @@ function plot(g, unit, total_unit, lines, stack) {
         .text("Area: " + d3.format(".3s")(total_area) + total_unit)
         .attr("text-anchor", "start")
         .attr("dominant-baseline", "central")
-        .attr("fill", "black")
+        .attr("fill", "transparent")
         .attr("x", w - margin_h + 10)
         .attr("y", y_abs(1) + 12);
     }
@@ -372,7 +372,7 @@ periods = ["Hour", "Day", "Week", "Month", "Year"];
 d3.select("#period_chooser").selectAll().data(periods).enter().append("a")
   .text(function(period) { return period })
   .attr('href', function(period){ return "?" + period })
-  .attr("style", function(d, i) { return (i == 0 ? "" : "margin-left:.4em;") });
+  .attr("style", function(d, i) { return (i == 0 ? "" : "margin-left:.4em;") + "color:blue;text-decoration:underline;cursor:pointer" });
 period = window.location.search.substr(1);
 if(period.length < 3) {
   window.location.search = "Day";
