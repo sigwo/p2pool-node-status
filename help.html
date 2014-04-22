@@ -59,13 +59,16 @@
       <div class="page-header">
         <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; Getting Started</h1>
         <b>
-		  <h5><a href="help.html">Getting Started</a>
+		  <h5><h5><a href="/">Stats</a>
+		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
 		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
 		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
           <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
         </b>
       </div>
-First, you will need a dogecoin wallet to generate your address to mine into and eventually 
+This is a basic walk-through for any coin. Please replace "doge" with your coin of choice.
+If you have ANY questions, please send us a tweet.
+You will need a dogecoin wallet to generate your address to mine into and eventually 
 spend. Go get the best dogecoin wallet out there....<a href="http://multidoge.org/" target="_blank">Multidoge</a>. This 
 is a lite wallet that does NOT have to download the entire block chain. That means no more
 waiting for hours to get to your doge! Now, it's time for setting up the connections to this 
@@ -79,33 +82,33 @@ Connection Information:
 <li>User: Your wallet address*</li>
 <li>Password: x</li>
 </h3>
-<br>
 <i>*using an online wallet is not recommended. Use wallets that support mined transactions.</i>
+</ul>
 </p>
-<hr>
-Create .bat files to make starting your miner easy. Just copy and paste the commands below.<br>
+<h4>Create .bat files to make starting your miner easy. Just copy and paste the commands below.<br></h4>
+<ul>
 <li><p style="font-weight:bold">For CPU mining: <a href="http://sourceforge.net/projects/cpuminer/files/pooler-cpuminer-2.3.3-win64.zip/download" target="_blank">Download Here</a></p></li>
-<pre><code>minerd.exe -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br>
-change the DAQ.....4Za to your dogecoin wallet address or you will be mining for sigwo. :-)<br>
-<br>
+<pre><code>minerd.exe -o stratum+tcp://doge.bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre>
+change the DAQ.....4Za to your dogecoin wallet address or you will be mining for us. :-)</ul>
+<ul>
 <li><p style="font-weight:bold">For GPU mining with NVIDIA: <a href="https://bitcointalk.org/index.php?topic=167229.0" target="_blank">Download Here</a></p></li>
 <pre><code>@ECHO OFF
 setx GPU_MAX_ALLOC_PERCENT 100
 setx GPU_USE_SYNC_OBJECTS 1
-cudaminer.exe -H 1 -i 0 -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br>
+cudaminer.exe -H 1 -i 0 -o stratum+tcp://doge.bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre>
 <li><p style="font-weight:bold">For GPU mining using cgminer (non NVIDIA GPUs): <a href="dl/cgminer-3.7.2-windows.zip" target="_blank">Download Here</a></p></li>
-Stock settings (pre-tuning).<br>
+Stock settings (pre-tuning)<br>
 <pre><code>@ECHO OFF
 setx GPU_MAX_ALLOC_PERCENT 100
 setx GPU_USE_SYNC_OBJECTS 1
-cgminer.exe --verbose --scrypt -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br> 
-Settings are what I use for my R9 290x and get ~935-940KH/s.<br>
+cgminer.exe --verbose --scrypt -o stratum+tcp://doge.bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre>
+Settings are what I use for my R9 290x and get ~935-940KH/s<br>
 <pre><code>@ECHO OFF
 setx GPU_MAX_ALLOC_PERCENT 100
 setx GPU_USE_SYNC_OBJECTS 1
-cgminer.exe --verbose --scrypt -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za
+cgminer.exe --verbose --scrypt -o stratum+tcp://doge.bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za
  -p x --no-submit-stale --thread-concurrency 25600 -I 20 -g 1 -w 512 --gpu-fan 65 --lookup-gap 2 --gpu-engine 
-1007 --gpu-memclock 1500 --gpu-powertune 20</code></pre><br>
+1007 --gpu-memclock 1500 --gpu-powertune 20</code></pre>
 Now that you are mining, it is time to set up an exchange account. This will allow you to trade DOGE for BTC, LTC, 
 or other coins for withdrawing/cashing out. <a href="http://moolah.io" target="_blank">Moolah.io</a>
  is a popular exchange, as well as <a href="http://bter.com" target="_blank">bter.com</a>, and <a href="http://prelude.io" target="_blank">prelude.io</a>. 
