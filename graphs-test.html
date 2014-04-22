@@ -46,7 +46,25 @@
   </script>
 </head>
 <body>
- <div class="container">
+    <div id="navbar"></div>
+
+    <div class="container">
+      <div class="page-header">
+        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; node dashboard</h1>
+        <b>
+		  <h5><a href="graphs.html">Personal Graphs</a>(TEST)
+		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
+		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
+		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
+          <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
+          <small>
+            <span id='_node' class='hidden'>Node: </span>
+            <span id='node' class='hidden'></span><br/>
+            Updated: <span id='updated'></span>
+          </small>
+        </b>
+      </div>
+ <!--<div class="container">
   <div class="navbar" style="margin:0 auto;width:440px;">
     <div class="navbar-inner">
       <a class="status" href="javascript:void(0)">Scale</a>
@@ -58,10 +76,10 @@
         <li id="scaleYear"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</a></li>
       </ul>
     </div>
-  </div>
+  </div>-->
   <center>
         <div class='container'>
-          <button id='scaleHour' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</button></a>
+          <button id='hour' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</button></a>
           <button id='day' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Day', 'scaleDay');">Day</button></a>
           <button id='week' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Week', 'scaleWeek');">Week</button></a>
           <button id='month' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Month', 'scaleMonth');">Month</button></a>
