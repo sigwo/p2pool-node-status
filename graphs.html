@@ -11,7 +11,7 @@
      a:link {color:#F0FFFF;}
     </style>
     
-	<title>BeMining.net - Personal Stats</title>
+	<title>BeMining.net - Miner Stats</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,100,100italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
@@ -44,7 +44,7 @@
 	<script type="text/javascript">
     function ChangeCurrentPeriod(p_Period, p_Sender) {
       period=p_Period;
-      $('#scale_menu li').removeClass('active');
+      $('#scale_menu button').removeClass('active'); <!--changed id to button-->
       $('#' + p_Sender).addClass('active');
       document.location.href =  "?" + period;
     }
@@ -54,13 +54,14 @@
 <div class="container"> 
  <div id="navbar">
       <div class="page-header">
-        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; Personal Stats</h1>
+        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; Miner Stats</h1>
         <b>
 		  <h5><a href="/">Stats</a>
 		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
 		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
 		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
-          <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
+          <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a>
+		  <a style="margin-left:30px;" title="Awesome calculator to check your hash vs. share probability" href="http://www.nckpnny.com/sharecalc/" target="_blank">Share Calculator</a></h5>
         </b>
       </div> 
  </div> 
