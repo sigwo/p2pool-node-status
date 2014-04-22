@@ -52,14 +52,39 @@
     <![endif]-->
   </head>
 <body>
+<!-- Menu Drop Down -->
+  <div class="navbar navbar-inverse navbar-fixed-top" style="position:relative;">
+    <div class="navbar-inner">
+      <div class="container" style="width:100%">
+        <img alt="Dogecoin icon" src="img/Dogecoin-icon.png" style="float:left;height:40px;margin-right:4px;width:40px;" />
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/">sigwo's Pool (ÐOGE)</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="index.html">Node & Pool Stats</a></li>
+            <li><a href="graphs.html">Graphs</a></li>
+            <li><a  href="help.html">Getting Started</a></li>
+	    <li><a href="faq.html">FAQ</a></li>
+            <li><a href="https://twitter.com/bemining" target="_blank">@bemining</a></li>
+            <li><a href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 <!-- Start coin info -->	
     <div id="navbar"></div>
 
     <div class="container">
       <div class="page-header">
-        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> FAQ</h1>
+        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; FAQ</h1>
         <b>
-		  <h5><a href="help.html">Getting Started</a>
+		  <h5><a href="/">Stats</a>
+		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
 		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
 		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
           <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
@@ -149,8 +174,18 @@ also prevent hardware errors which can occur with worksizes that are too small.<
 If you have any problems, questions, or issues please find us on twitter <a href="https://twitter.com/bemining" target="_blank">@bemining</a>. 
  </div> 
 </div>
-  <div style="border-top: 1px solid #ddd;margin-top:20px;padding:8px;text-align:center;">
-    <p><code><a href="https://github.com/blixnood/P2PoolExtendedFrontEnd" target="_blank">P2PoolExtendedFrontEnd</a> interface by <a href="https://github.com/blixnood/" target="_blank">blixnood</a></code></p>
-    <p><code>DOGE <a href="dogecoin:DBWWjj1z7Ej3TUtFHRVe5qDJmSLY7vbayG">DBWWjj1z7Ej3TUtFHRVe5qDJmSLY7vbayG</a></code></p>
-  </div>
+    <div id='footer'>
+      <div class='container'>
+        <hr>
+        <p class='text-center'>
+          Interface by <a href="https://github.com/johndoe75/p2pool-node-status.git" target="_blank">johndoe75</a>; Customized by http://bemining.net
+          &dash;
+          <a href="https://github.com/sigwo/p2pool-node-status.git" target="_blank">https://github.com/sigwo/p2pool-node-status.git</a>
+        </p>
+        <p class='text-center'>
+          Donate some coins, if you like it <code>1CP3kLhkMCAtJGdzcYtuE6ddXYN8RBK3Ge</code>
+          (<i class='fa fa-btc'></i>) or <code>LNspeJJPk2wh9HUQXL12snZ6sZuhxwfgdM</code> (LTC)
+        </p>
+      </div>
+    </div>
 </body></html>
