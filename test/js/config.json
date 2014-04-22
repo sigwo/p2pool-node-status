@@ -1,0 +1,15 @@
+var config = {
+  myself : [
+	"1CP3kLhkMCAtJGdzcYtuE6ddXYN8RBK3Ge",
+	"LNspeJJPk2wh9HUQXL12snZ6sZuhxwfgdM"
+  ],
+  host : "",
+  // data reload interval in seconds
+  reload_interval : 20,
+  // chart reload interval in seconds
+  reload_chart_interval : 120,
+  use_fontawesome: false,
+  show_github_ribbon: false,
+  // HTML to load at top of page
+  navbar_url : ""
+}
