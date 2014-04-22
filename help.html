@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <title>sigwo's Pool (ÐOGE) - Getting Started</title>
+  <link rel="shortcut icon" type="image/png" href="favicon.ico" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/bootstrap-responsive.css" rel="stylesheet" />
+  <link href="css/jquery.jqplot.min.css" rel="stylesheet" />
+  <style type="text/css">
+    body {padding-top: 60px;}
+    line {
+      stroke:black;
+      stroke-width:1;
+      shape-rendering:crispEdges;
+    }
+    text {
+      font-family:Sans-serif;
+      font-size:12px;
+    }
+    .fixdivs {margin:0 auto;width:1000px}
+    .fixdivs h2 {text-align:center;}
+    .plotline {
+      stroke-width:1.4;
+      fill:none;
+    }
+  </style>
+  <script type="text/javascript" src="conf/settings.js"></script>
+  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
+  <script type="text/javascript" src="js/jqplot.pieRenderer.min.js"></script>
+  <script type="text/javascript" src="js/contact.js"></script>
+  <script type="text/javascript">
+    function ChangeCurrentPeriod(p_Period, p_Sender) {
+      period=p_Period;
+      $('#scale_menu li').removeClass('active');
+      $('#' + p_Sender).addClass('active');
+      document.location.href =  "?" + period;
+    }
+  </script>
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+       <img alt="Dogecoin icon" src="img/Dogecoin-icon.png" style="float:left;height:40px;margin-right:4px;width:40px;" />
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/">sigwo's Pool (ÐOGE)</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="index.html">Node & Pool Stats</a></li>
+            <li><a href="graphs.html">Graphs</a></li>
+            <li><a  href="help.html">Getting Started</a></li>
+	    <li><a href="faq.html">FAQ</a></li>
+            <li><a href="https://twitter.com/bemining" target="_blank">@bemining</a></li>
+            <li><a href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="navbar" style="margin:0 auto;width:900px;">
+    <div class="navbar-inner">
+<div style="max-width:60em;margin:0 auto;text-align:justify;">
+<br>
+<p style="font-weight:bold">
+First, you will need a dogecoin wallet to generate your address to mine into and eventually 
+spend. Go get the best dogecoin wallet out there....<a href="http://multidoge.org/" target="_blank">Multidoge</a>. This 
+is a lite wallet that does NOT have to download the entire block chain. That means no more
+waiting for hours to get to your doge! Now, it's time for setting up the connections to this 
+awesome pool! PLEASE READ THE <a href="faq.html">FAQ</a> :-)
+<br>
+<p style="font-weight:bold">
+Connection Information:
+<br></p>
+<ul>
+<li>No registration needed, you may begin mining now!</li>
+<li>User: Your wallet address*</li>
+<li>Password: x</li>
+</h3>
+<br>
+<i>*using an online wallet is not recommended. Use wallets that support mined transactions.</i>
+</p>
+<hr>
+Create .bat files to make starting your miner easy. Just copy and paste the commands below.<br>
+<li><p style="font-weight:bold">For CPU mining: <a href="http://sourceforge.net/projects/cpuminer/files/pooler-cpuminer-2.3.3-win64.zip/download" target="_blank">Download Here</a></p></li>
+<pre><code>minerd.exe -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br>
+change the DAQ.....4Za to your dogecoin wallet address or you will be mining for sigwo. :-)<br>
+<br>
+<li><p style="font-weight:bold">For GPU mining with NVIDIA: <a href="https://bitcointalk.org/index.php?topic=167229.0" target="_blank">Download Here</a></p></li>
+<pre><code>@ECHO OFF
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_USE_SYNC_OBJECTS 1
+cudaminer.exe -H 1 -i 0 -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br>
+<li><p style="font-weight:bold">For GPU mining using cgminer (non NVIDIA GPUs): <a href="dl/cgminer-3.7.2-windows.zip" target="_blank">Download Here</a></p></li>
+Stock settings (pre-tuning).<br>
+<pre><code>@ECHO OFF
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_USE_SYNC_OBJECTS 1
+cgminer.exe --verbose --scrypt -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za -p x</code></pre><br> 
+Settings are what I use for my R9 290x and get ~935-940KH/s.<br>
+<pre><code>@ECHO OFF
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_USE_SYNC_OBJECTS 1
+cgminer.exe --verbose --scrypt -o stratum+tcp://bemining.net:22550 -u DAQaLER2ebsBDn4TstTmvydkK5rbZ2v4Za
+ -p x --no-submit-stale --thread-concurrency 25600 -I 20 -g 1 -w 512 --gpu-fan 65 --lookup-gap 2 --gpu-engine 
+1007 --gpu-memclock 1500 --gpu-powertune 20</code></pre><br>
+Now that you are mining, it is time to set up an exchange account. This will allow you to trade DOGE for BTC, LTC, 
+or other coins for withdrawing/cashing out. <a href="http://moolah.io" target="_blank">Moolah.io</a>
+ is a popular exchange, as well as <a href="http://bter.com" target="_blank">bter.com</a>, and <a href="http://prelude.io" target="_blank">prelude.io</a>. 
+I use <a href="http://gyft.com" target="_blank">Gyft</a> to buy gift cards to purchase stuff.
+<br>
+</p>
+Check the Active miners tab for your mining address; if you see that your dead hashrate is more than 50%, you probably need to adjust your miner settings. Setting the queue option to zero (0) can help, but usually it's lowering the intensity option that has the biggest impact on getting less or no dead shares. If you've already mined coins on a standard pool, you may notice an increased stale rate in your miner; 10% to 20% is normal and expected behaviour for P2Pool. The main idea is to keep your own stale rate lower than the P2Pool netowrk's stale rate (the pool rate).
+
+P2Pool payments can take up to 24 hours to ramp up to the maximum payout per block; this is due to the PPLNS payment system that nearly all pools use. This doesn't mean you won't receive payments within a few hours, just that it likely won't be equalized until about 24 hours later. <p style="font-weight:bold">Payouts require that you solve at least one share of difficulty greater than the P2Pool share target per day.</p>
+</p>
+If you have any problems, questions, or issues please find us on twitter <a href="https://twitter.com/bemining" target="_blank">@bemining</a> or check out our <a href="faq.html">FAQ</a>. 
+</div> 
+</div>
+  <div style="border-top: 1px solid #ddd;margin-top:20px;padding:8px;text-align:center;">
+    <p><code><a href="https://github.com/blixnood/P2PoolExtendedFrontEnd" target="_blank">P2PoolExtendedFrontEnd</a> interface by <a href="https://github.com/blixnood/" target="_blank">blixnood</a></code></p>
+    <p><code>DOGE <a href="dogecoin:DBWWjj1z7Ej3TUtFHRVe5qDJmSLY7vbayG">DBWWjj1z7Ej3TUtFHRVe5qDJmSLY7vbayG</a></code></p>
+  </div>
+</body></html>
