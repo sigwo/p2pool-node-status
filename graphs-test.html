@@ -26,7 +26,7 @@
     <script src="js/exporting.js"></script>
 
     <script src="js/util.js"></script>
-    <script src="js/charts.js"></script>
+    <script src="js/charts-test.js"></script>
 
     <script src="js/config.json"></script>
 
@@ -104,7 +104,9 @@
           <button id='year' type="button" class="hashrate btn btn-info">Year</button>
         </div>
       </center>
-      <!--<div id='chart'></div>-->
+	  
+	  <!-- Displays the chart-->
+      <div id='chart'></div>
 
       <h4>Active miners on this node</h4>
       <table id='active_miners' class="table table-hover">
@@ -116,7 +118,7 @@
           <th width='14%' class='text-right'>Predicted payout</th>
         </tr>
       </table>
-	  </div>
+	
     <div id='footer'>
       <div class='container'>
         <hr>
@@ -265,7 +267,8 @@
         }
         $('#'+address).remove(); $('#active_miners').append(tr);
       });
-
+	  
+	<!--Does this plot graphs?-->
       if(local_doa_hashrate !== 0 && local_hashrate !== 0) {
         doa_rate= (local_doa_hashrate / local_hashrate) * 100;
       } else { doa_rate= 0; }
@@ -282,34 +285,6 @@
       pool_nonstale_hash_rate=
         parseInt(global_stats.pool_nonstale_hash_rate || 0);
       global_doa_rate= pool_hash_rate - pool_nonstale_hash_rate;
-
-      global_rate= formatHashrate(pool_hash_rate)
-        + ' (DOA '
-        + formatHashrate(global_doa_rate)
-        + ' / ' + ((global_doa_rate / pool_hash_rate) * 100).toFixed(2)
-        + '%)';
-      $('#global_rate').text(global_rate);
-
-      $('#share_difficulty')
-        .text(parseFloat(global_stats.min_difficulty).toFixed(2));
-
-      $('#block_value')
-        .text(parseFloat(local_stats.block_value).toFixed(8))
-        .append(' ').append(currency.clone());
-
-      $('#node_donation')
-        .text((local_stats.donation_proportion * 100) + '%');
-      $('#node_fee')
-        .text(local_stats.fee + '%');
-      $('#p2pool_version')
-        .text(local_stats.version);
-      $('#protocol_version')
-        .text(local_stats.protocol_version);
-
-      $('#peers_in').text(local_stats.peers.incoming);
-      $('#peers_out').text(local_stats.peers.outgoing);
-
-      $('#node_uptime').text(('' + local_stats.uptime).formatSeconds());
 
       if(local_stats.warnings.length > 0) {
         $('#node_alerts').empty();
@@ -328,25 +303,6 @@
             $(this).addClass('hidden');
           });
       }
-
-      $('#shares')
-        .text('Total: ' + local_stats.shares.total
-        + ' (Orphan: ' + local_stats.shares.orphan
-        + ', Dead: ' + local_stats.shares.dead + ')');
-
-      if(local_hashrate !== 0) {
-        time_to_share=
-          (parseInt(local_stats.attempts_to_share) / parseInt(local_hashrate));
-        $('#expected_time_to_share').text((''+time_to_share).formatSeconds());
-      } else {
-        $('#expected_time_to_share').html('&dash;');
-      }
-
-      attempts_to_block=
-        parseInt(local_stats.attempts_to_block || 0);
-      time_to_block= attempts_to_block / pool_hash_rate;
-      $('#expected_time_to_block').text((''+time_to_block).formatSeconds());
-    });
 
     // Fills the recent block table
 
@@ -460,7 +416,8 @@
         });
       });
     }
-
+	
+	<!--does this do the graphing?-->
     var fetchGraph= function(interval) {
       var graph_hashrate= [], graph_doa_hashrate= [];
 
