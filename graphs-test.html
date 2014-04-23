@@ -1,13 +1,14 @@
 ﻿<!DOCTYPE html>
-<html><head>
-<meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="test/img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico">
 
-    <title>BeMining.net - Personal Stats</title>
+    <title>GRAPHS TEST!</title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,400italic,100,100italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
@@ -28,91 +29,95 @@
     <script src="js/charts.js"></script>
 
     <script src="js/config.json"></script>
- 
-  <script type="text/javascript" src="conf/settings.js"></script>
-  <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
-  <script type="text/javascript" src="js/jqplot.pieRenderer.min.js"></script>
-  <script type="text/javascript" src="js/contact.js"></script>
-  <script type="text/javascript">
-    function ChangeCurrentPeriod(p_Period, p_Sender) {
-      period=p_Period;
-      $('#scale_menu li').removeClass('active');
-      $('#' + p_Sender).addClass('active');
-      document.location.href =  "?" + period;
-    }
-  </script>
-</head>
-<body>
+
+    <!-- Custom styles for this template -->
+    <link href="grid.css" rel="stylesheet">
+
+    <style type="text/css">
+      body {
+        font-family: 'Roboto', Helvetica, sans-serif;
+        font-size: 13px;
+      }
+      #myModal .modal-dialog {
+        width: 70%;/* your width */
+      }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+ <!--   <div id='ribbon' style='display:none;'>
+      <a href="https://github.com/johndoe75/p2pool-node-status">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="img/forkme_right_orange_ff7600.png" alt="Fork me on GitHub">
+      </a>
+    </div> -->
+  
+  <!-- BeMining.net Header Bar   
+        <h3><a style="margin-left:40px;" href="http://bemining.net">BeMining.net Pools</a></h3>
+            <h5><a style="margin-left:40px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
+            <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
+        </div> -->
+		
+  <!-- Start coin info -->	
     <div id="navbar"></div>
 
     <div class="container">
       <div class="page-header">
-        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; miner's dashboard (TESTING)</h1>
+        <h1><a href="http://bemining.net" target="_blank">BeMining.net</a> <span id='currency'></span> &dash; node dashboard</h1>
         <b>
 		  <h5><a href="/">Stats</a>
 		  <a style="margin-left:30px;" href="help.html">Getting Started</a>
 		  <a style="margin-left:30px;" href="faq.html">FAQ</a>
 		  <a style="margin-left:30px;" href="https://twitter.com/bemining" target="_blank">@bemining</a>
-          <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a></h5>
+          <a style="margin-left:30px;" href="http://www.zoomhash.com/#_a_003" target="_blank">Get your ASICs!</a>
+		  <a style="margin-left:30px;" title="Awesome calculator to check your hash vs. share probability" href="http://www.nckpnny.com/sharecalc/" target="_blank">Share Calculator</a></h5>
+          <small>
+            <span id='_node' class='hidden'>Node: </span>
+            <span id='node' class='hidden'></span><br/>
+            Updated: <span id='updated'></span>
+          </small>
         </b>
       </div>
- <div class="container">
-  <div class="navbar" style="margin:0 auto;width:440px;">
-    <div class="navbar-inner">
-<!--   <a class="status" href="javascript:void(0)">Scale</a>
-       <ul class="container" id="scale_menu">
-        <li id="scaleHour" class="active"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</a></li>
-        <li id="scaleDay"><a href="javascript:ChangeCurrentPeriod('Day', 'scaleDay');">Day</a></li>
-        <li id="scaleWeek"><a href="javascript:ChangeCurrentPeriod('Week', 'scaleWeek');">Week</a></li>
-        <li id="scaleMonth"><a href="javascript:ChangeCurrentPeriod('Month', 'scaleMonth');">Month</a></li>
-        <li id="scaleYear"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</a></li>
-      </ul> -->
-    </div>
-  </div>
-  <center>
-        <div class='container'>
-          <button id='hour' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Hour', 'scaleHour');">Hour</button></a>
-          <button id='day' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Day', 'scaleDay');">Day</button></a>
-          <button id='week' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Week', 'scaleWeek');">Week</button></a>
-          <button id='month' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Month', 'scaleMonth');">Month</button></a>
-          <button id='year' type="button" class="hashrate btn btn-info"><a href="javascript:ChangeCurrentPeriod('Year', 'scaleYear');">Year</button></a>
-        </div>
-     </center>
- </div>
-  <script type="text/javascript">
-    period = window.location.search.substr(1);
-    $('#scale_menu li').removeClass('active');
-    $('#scale' + period).addClass('active');
 
-    d3.json('/web/currency_info', function(currency_info) {
-      d3.selectAll('.symbol').text(currency_info.symbol);
-    });
-  </script>
-  <p style="display: none">Periods: <span id="period_chooser"></span> Current: <span id="period_current"></span></p>
-  <div id="warnings"></div>
-  <div class="well fixdivs" style="margin:20px auto;">  
-    <h2>Miners</h2>
-    <div id="miners"></div>
-  </div>
-   <br/>
-  <div class="well fixdivs">  
-    <h2>Traffic rate</h2>
-    <svg id="traffic_rate"></svg>
-  </div>
-   <br/>
-  <div class="well fixdivs">  
-    <h2>dogecoind GetBlockTemplate Latency</h2>
-    <svg id="getwork_latency"></svg>
-  </div>
-   <br/>
-  <div class="well fixdivs">  
-    <h2>Memory Usage</h2>
-    <svg id="memory_usage"></svg>
-  </div>
- <div id='footer'>
+      <div id='node_alerts' class="alert alert-danger hidden"></div>
+
+      <!-- We should have a possibility showing other miners on our node what
+           happened or if we have other things to tell them. -->
+      <div class="alert alert-info hidden">
+        <p><b>2014-04-21: Zoom Hash $10 off code: SLQLG7473ZYGOK Tweet us if you find this. :-)</b></p->
+      </div>
+
+      <center>
+        <div class='container'>
+          <button id='hour' type="button" class="hashrate btn btn-info">Hour</button>
+          <button id='day' type="button" class="hashrate btn btn-info">Day</button>
+          <button id='week' type="button" class="hashrate btn btn-info">Week</button>
+          <button id='month' type="button" class="hashrate btn btn-info">Month</button>
+          <button id='year' type="button" class="hashrate btn btn-info">Year</button>
+        </div>
+      </center>
+      <div id='chart'></div>
+
+      <h4>Active miners on this node</h4>
+      <table id='active_miners' class="table table-hover">
+        <tr>
+          <th width='50%' class='text-left'>Miner's Address</th>
+          <th width='12%' class='text-right'>Hashrate</th>
+          <th width='12%' class='text-right'>DOA Hashrate</th>
+          <th width='12%' class='text-right'>DOA %</th>
+          <th width='14%' class='text-right'>Predicted payout</th>
+        </tr>
+      </table>
+	  </div>
+    <div id='footer'>
       <div class='container'>
         <hr>
         <p class='text-center'>
@@ -126,10 +131,382 @@
         </p>
       </div>
     </div>
-  <script type="text/javascript" src="js/bottom-graphs.js"></script>  
-  <script type="text/javascript">
+    <script type="text/javascript">
+
     $(document).ready(function() {
-      fixContact();
+      // shall the Github ribbon been shown?
+      if(config.show_github_ribbon) { $('#ribbon').fadeIn(1000); }
+      else { $('#ribbon').remove(); }
+
+      $(document).trigger('init');
+      if(config.navbar_url && config.navbar_url.length > 0) {
+        $("#navbar").load(config.navbar_url);
+      }
     });
-  </script>
-</body></html>
+
+    var currency, currency_info, rate, local_stats,
+        global_stats, current_payouts, recent_blocks,
+        payout_addr;
+    var local_hashrate= 0, local_doa_hashrate= 0;
+
+    var jsonp= "./jsonp.php?callback=?";
+
+    var api_url= "";
+
+    // Check if we shall remotely connect to a p2pool running somewhere
+
+    if(config.host && config.host.length > 0) {
+      api_url= jsonp + '&host=' + encodeURI(config.host) + '&report=';
+      $('#node').removeClass('hidden').text(config.host);
+      $('#_node').removeClass('hidden');
+    }
+
+    // ==================================================================
+    // event handlers
+
+    // toggle hashrate chart
+
+    $('#hour.hashrate').click(function(e) {
+      fetchGraph('hour');
+    });
+    $('#day.hashrate').click(function(e) {
+      fetchGraph('day');
+    });
+    $('#week.hashrate').click(function(e) {
+      fetchGraph('week');
+    });
+    $('#month.hashrate').click(function(e) {
+      fetchGraph('month');
+    });
+    $('#year.hashrate').click(function(e) {
+      fetchGraph('year');
+    });
+
+    // ==================================================================
+    // custom event handlers
+
+    // init
+
+    $(document).on('init', function(e, eventInfo) {
+      fetchdata();
+      fetchBlocks(); /*fetchShares();*/
+      fetchGraph('day'); /*fetchPeers();*/
+    });
+
+    $(document).on('update', function(e, eventInfo) {
+      fetchdata();
+      fetchBlocks();
+    });
+
+    $(document).on('update_graph', function(e, eventInfo) {
+      console.log(chart.title.text);
+      graphPeriod= chart.title.text.match(/\((.+)\)/)[1] || 'day';
+      fetchGraph(graphPeriod);
+    });
+
+    // Fills the list of active miners on this node.  I know, there are
+    // zillions of people out there on p2pool.  But I'm typically only
+    // interested to see, who is mining on my node.
+
+    $(document).on('update_miners', function(e, eventInfo) {
+      local_hashrate= 0; local_doa_hashrate= 0;
+      $.each(local_stats.miner_hash_rates, function(address, hashrate) {
+        tr= $('<tr/>').attr('id', address);
+
+        // highlight our miner if configured
+        if(config.myself && config.myself.length > 0 &&
+           $.inArray(address, config.myself) >= 0) {
+          tr.addClass('warning');
+        }
+
+        // highlight the pool's payout address
+        payout_addr in current_payouts ?
+          $('#payout_now')
+            .text(current_payouts[payout_addr])
+            .append(' ')
+            .append(currency.clone()) :
+          $('#payout_now').html('&dash;');
+
+        address_span= $('<span/>').addClass('coin_address').text(address);
+        link_icon= $('<i/>').addClass('fa fa-external-link fa-fw');
+        blockinfo= $('<a/>')
+          .attr('href', currency_info.address_explorer_url_prefix + address)
+          .attr('target', '_blank').append(link_icon);
+
+        doa= local_stats.miner_dead_hash_rates[address] || 0;
+        doa_prop= (parseFloat(doa) / parseFloat(hashrate)) * 100;
+
+        local_hashrate+= hashrate || 0;
+        local_doa_hashrate+= doa  || 0;
+
+        tr.append($('<td/>').addClass('text-left')
+          .append(address_span)
+          .append('&nbsp;')
+          //.append(chart_icon)
+          .append(blockinfo));
+        tr.append($('<td/>').addClass('text-right')
+          .append(formatHashrate(hashrate)));
+        tr.append($('<td/>').addClass('text-right')
+          .append(formatHashrate(doa)));
+        tr.append($('<td/>').addClass('text-right')
+          .append(doa_prop.toFixed(2) + '%'));
+
+        payout= current_payouts[address] || 0;
+
+        if(payout) {
+          td= $('<td/>').attr('class', 'text-right')
+            .text(parseFloat(payout).toFixed(8))
+            .append(' ').append(currency.clone());
+          tr.append(td);
+        }
+        else {
+          tr.append($('<td/>').attr('class', 'text-right')
+            .append($('<i/>').append('no shares yet')));
+        }
+        $('#'+address).remove(); $('#active_miners').append(tr);
+      });
+
+      if(local_doa_hashrate !== 0 && local_hashrate !== 0) {
+        doa_rate= (local_doa_hashrate / local_hashrate) * 100;
+      } else { doa_rate= 0; }
+
+      rate= formatHashrate(local_hashrate)
+        + ' (DOA '
+        + formatHashrate(local_doa_hashrate)
+        + ' / ' + doa_rate.toFixed(2)
+        + '%)';
+      $('#local_rate').text(rate);
+
+      pool_hash_rate=
+        parseInt(global_stats.pool_hash_rate || 0);
+      pool_nonstale_hash_rate=
+        parseInt(global_stats.pool_nonstale_hash_rate || 0);
+      global_doa_rate= pool_hash_rate - pool_nonstale_hash_rate;
+
+      global_rate= formatHashrate(pool_hash_rate)
+        + ' (DOA '
+        + formatHashrate(global_doa_rate)
+        + ' / ' + ((global_doa_rate / pool_hash_rate) * 100).toFixed(2)
+        + '%)';
+      $('#global_rate').text(global_rate);
+
+      $('#share_difficulty')
+        .text(parseFloat(global_stats.min_difficulty).toFixed(2));
+
+      $('#block_value')
+        .text(parseFloat(local_stats.block_value).toFixed(8))
+        .append(' ').append(currency.clone());
+
+      $('#node_donation')
+        .text((local_stats.donation_proportion * 100) + '%');
+      $('#node_fee')
+        .text(local_stats.fee + '%');
+      $('#p2pool_version')
+        .text(local_stats.version);
+      $('#protocol_version')
+        .text(local_stats.protocol_version);
+
+      $('#peers_in').text(local_stats.peers.incoming);
+      $('#peers_out').text(local_stats.peers.outgoing);
+
+      $('#node_uptime').text(('' + local_stats.uptime).formatSeconds());
+
+      if(local_stats.warnings.length > 0) {
+        $('#node_alerts').empty();
+
+        $.each(local_stats.warnings, function(key, warning) {
+          $('#node_alerts').append($('<p/>').append(warning));
+        });
+
+        $('#node_alerts').fadeIn(1000, function() {
+          $(this).removeClass('hidden');
+        });
+      }
+      else {
+        if(!$('#node_alerts').hasClass('hidden'))
+          $('#node_alerts').fadeOut(1000, function() {
+            $(this).addClass('hidden');
+          });
+      }
+
+      $('#shares')
+        .text('Total: ' + local_stats.shares.total
+        + ' (Orphan: ' + local_stats.shares.orphan
+        + ', Dead: ' + local_stats.shares.dead + ')');
+
+      if(local_hashrate !== 0) {
+        time_to_share=
+          (parseInt(local_stats.attempts_to_share) / parseInt(local_hashrate));
+        $('#expected_time_to_share').text((''+time_to_share).formatSeconds());
+      } else {
+        $('#expected_time_to_share').html('&dash;');
+      }
+
+      attempts_to_block=
+        parseInt(local_stats.attempts_to_block || 0);
+      time_to_block= attempts_to_block / pool_hash_rate;
+      $('#expected_time_to_block').text((''+time_to_block).formatSeconds());
+    });
+
+    // Fills the recent block table
+
+    $(document).on('update_blocks', function(e, eventInfo) {
+      var table = document.getElementById("recent_blocks");
+      for (var i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+      }
+      $.each(recent_blocks, function(key, block) {
+        ts= block.ts; num= block.number; hash= block.hash;
+
+        // link to blockchain.info for the given hash
+        blockinfo= $('<a/>')
+          .attr('href', currency_info.block_explorer_url_prefix + hash)
+          .attr('target', '_blank').text(hash);
+
+        tr= $('<tr/>').attr('id', num);
+        tr.append($('<td/>')
+          .append($.format.prettyDate(new Date(ts * 1000))));
+        tr.append($('<td/>').append(num));
+        tr.append($('<td/>').append(blockinfo));
+        tr.append($('<td/>').html('&dash;'));
+        $('#'+num).remove(); $('#recent_blocks').append(tr);
+      });
+    });
+
+    $(document).on('update_shares', function(e, eventInfo) {
+      $.each(recent_blocks, function(key, block) {
+        ts= block.ts; num= block.number; hash= block.hash;
+
+        // link to blockchain.info for the given hash
+        blockinfo= $('<a/>')
+          .attr('href', currency_info.block_explorer_url_prefix + hash)
+          .attr('target', '_blank').text(hash);
+
+        tr= $('<tr/>').attr('id', num);
+        tr.append($('<td/>')
+          .append($.format.prettyDate(new Date(ts * 1000))));
+        tr.append($('<td/>')
+          .append(num));
+        tr.append($('<td/>')
+          .append(blockinfo));
+        tr.append($('<td/>')
+          .html('&dash;'));
+        $('#recent_blocks').append(tr);
+      });
+    });
+
+    // Place the currency symbol for the currency the node is mining.  If
+    // it's Bitcoin, use the fontawesome BTC icon
+
+    var set_currency_symbol= true;
+    $(document).on('update_currency', function(e, eventInfo) {
+      if(currency_info.symbol === 'BTC' && config.use_fontawesome) {
+        // use fontawesome BTC symbol
+        currency= $('<i/>').attr('class', 'fa fa-btc fa-fw');
+      }
+      else { currency= $('<span/>').append(currency_info.symbol); }
+
+      if(set_currency_symbol) {
+        $('#currency')
+          .append('(').append(currency).append(')');
+        set_currency_symbol= false;
+      }
+    });
+
+    // Updates the 'Updated:' field in page header
+
+    $(document).on('update_time', function(e, eventInfo) {
+      dts= $.format.date(new Date(), 'yyyy-MM-dd HH:mm:ss');
+      $('#updated').text(dts);
+    });
+
+    // ==================================================================
+
+    var fetchdata= function() {
+      $.getJSON(api_url + '/rate', function(data) {
+        if(data) rate= data;
+
+        $.getJSON(api_url + '/web/currency_info', function(data) {
+          currency_info= data;
+          $(document).trigger('update_currency');
+
+          $.getJSON(api_url + '/local_stats', function(data) {
+            if(data) local_stats= data;
+
+            $.getJSON(api_url + '/current_payouts', function(data) {
+              if(data) current_payouts= data;
+
+              $.getJSON(api_url + '/payout_addr', function(data) {
+                if(data) payout_addr= data;
+
+                $.getJSON(api_url + '/global_stats', function(data) {
+                  if(data) global_stats= data;
+                  $(document).trigger('update_miners');
+                  $(document).trigger('update_time');
+                });
+              });
+            });
+          });
+        });
+      });
+    };
+
+    var fetchBlocks= function() {
+      $.getJSON(api_url + '/web/currency_info', function(data) {
+        currency_info= data;
+        $.getJSON(api_url + '/recent_blocks', function(data) {
+          if(data) recent_blocks= data;
+          $(document).trigger('update_blocks');
+        });
+      });
+    }
+
+    var fetchGraph= function(interval) {
+      var graph_hashrate= [], graph_doa_hashrate= [];
+
+      $.getJSON(api_url + '/web/graph_data/local_hash_rate/last_' + interval
+        ,function(data) {
+        $.each(data, function(key, value) {
+          el= []; el.push(parseInt(value[0]) * 1000,
+            parseFloat(value[1]));
+          graph_hashrate.push(el);
+        });
+        graph_hashrate.sort();
+        $.getJSON(api_url + '/web/graph_data/local_dead_hash_rate/last_' + interval
+          ,function(data) {
+          $.each(data, function(key, value) {
+            el= []; el.push(parseInt(value[0]) * 1000,
+              parseFloat(value[1]));
+            graph_doa_hashrate.push(el);
+          });
+          graph_doa_hashrate.sort();
+          draw(graph_hashrate, graph_doa_hashrate, 'chart', interval);
+        });
+      });
+    };
+
+    // Let the GitHub ribbon fade out and be removed after 5 seconds.
+
+    if(config.show_github_ribbon) {
+      setTimeout(function() {
+        $('#ribbon').fadeOut(1000, function() {
+          this.remove();
+        });
+      }, 5 * 1000);
+    }
+
+    // update tables and miner data
+
+    setInterval(function() {
+      $(document).trigger('update');
+    }, config.reload_interval * 1000);
+
+    // update blocks and graph
+
+    setInterval(function() {
+      $(document).trigger('update_graph');
+    }, config.reload_chart_interval * 1000);
+
+    </script>
+  </body>
+</html>
