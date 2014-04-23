@@ -7,7 +7,7 @@ var draw= function(hashrate, doarate, renderTo, interval) {
     },
     credits: { enabled: false },
     exporting: { enabled: false },
-    title: { text: 'Hashrate/DOA rate (' + interval + ')' },
+    title: { text: (' + update_miners + ') 'Hashrate/DOA rate (' + interval + ')' },
     xAxis: {
       type: 'datetime',
       maxZoom: 24 * 3600,
