@@ -71,7 +71,7 @@ var draw= function(hashrate, doarate, renderTo, interval) {
     },
     plotOptions: {
       areaspline: {
-        fillColor: '#ace',
+        fillColor: '',
         marker: { enabled: false },
         lineWidth: 2,
         shadow: false,
