@@ -99,7 +99,7 @@ function plot(g, unit, total_unit, lines, stack) {
       })
       .style("fill", function(line){return line.color})
       .attr("stroke", function(line){return line.color})
-      .attr("class", "plotline");
+      .attr("class", "line");
 
     var total = 0;
     var total_area = 0;
@@ -186,7 +186,7 @@ function plot(g, unit, total_unit, lines, stack) {
           (line.data)
       })
       .style("stroke", function(line) { return line.color })
-      .attr("class", "plotline");
+      .attr("class", "line");
 
     for(var i = 0; i < lines.length; ++i) {
       var line = lines[i];
