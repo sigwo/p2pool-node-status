@@ -233,7 +233,7 @@ function plot(g, unit, total_unit, lines, stack) {
     .append("svg:text")
     .attr("transform", "rotate(45)")
     .attr("text-anchor", "middle")
-    .attr("dominant-baseline", "central")
+    
     .text(x.tickFormat(13));
 
   g.selectAll()
