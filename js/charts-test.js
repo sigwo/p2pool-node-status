@@ -70,7 +70,7 @@ var draw= function(hashrate, doarate, renderTo, interval) {
       borderWidth: 0
     },
     plotOptions: {
-      areaspline: {
+      line: {
         fillColor: '',
         marker: { enabled: false },
         lineWidth: 2,
@@ -93,7 +93,7 @@ var draw= function(hashrate, doarate, renderTo, interval) {
       },
     },
     series: [{
-      type: 'areaspline',
+      type: 'line',
       name: 'Miner Hashrate',
       data: hashrate,
       lineWidth: 1,
