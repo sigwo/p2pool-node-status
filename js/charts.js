@@ -93,7 +93,7 @@ var draw= function(hashrate, doarate, renderTo, interval) {
       },
     },
     series: [{
-      type: 'spline',
+      type: 'areaspline',
       name: 'Hashrate',
       data: hashrate,
       lineWidth: 1,
